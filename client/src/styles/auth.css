@@ -1,0 +1,140 @@
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Левая часть - информация */
+.auth-info-section {
+  flex: 1;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-info-content {
+  max-width: 400px;
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.auth-logo i {
+  font-size: 2.5rem;
+}
+
+.auth-logo h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.auth-tagline {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+
+.auth-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+}
+
+.auth-feature i {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Правая часть - формы */
+.auth-form-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #f8fafc;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+  
+  .auth-info-section {
+    padding: 30px 20px;
+    min-height: auto;
+    text-align: center;
+  }
+  
+  .auth-info-content {
+    max-width: 100%;
+  }
+  
+  .auth-logo {
+    justify-content: center;
+  }
+  
+  .auth-feature {
+    justify-content: center;
+  }
+  
+  .auth-form-section {
+    padding: 30px 20px;
+    min-height: calc(100vh - 200px);
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-info-section {
+    padding: 20px 15px;
+    min-height: 180px;
+  }
+  
+  .auth-logo {
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .auth-logo i {
+    font-size: 1.8rem;
+  }
+  
+  .auth-logo h1 {
+    font-size: 1.7rem;
+  }
+  
+  .auth-tagline {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+  
+  .auth-features {
+    gap: 15px;
+  }
+  
+  .auth-feature {
+    font-size: 0.9rem;
+    gap: 10px;
+  }
+  
+  .auth-form-section {
+    padding: 20px 15px;
+    min-height: calc(100vh - 180px);
+  }
+}

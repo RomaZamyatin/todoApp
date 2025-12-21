@@ -12,7 +12,7 @@ const taskRoutes = require('./routes/taskRoutes');
 User.hasMany(Task, { foreignKey: 'user_id', as: 'tasks' });
 Task.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 
-require('dotenv').config();
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;

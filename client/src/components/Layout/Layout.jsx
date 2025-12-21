@@ -10,8 +10,7 @@ const Layout = ({ children }) => {
         {children}
       </main>
       <footer className="footer">
-        <p>© 2024 TodoList - Управление задачами</p>
-        <p>Все задачи хранятся в базе данных</p>
+        <p>© 2025 TodoList - Управление задачами</p>
       </footer>
     </div>
   );

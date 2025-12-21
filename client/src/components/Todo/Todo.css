@@ -290,6 +290,7 @@ label {
   border-left: 4px solid #e5e7eb;
   transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
+  min-width: 750px;
 }
 
 .task-item:hover {

@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 5000;
 // }));
 app.use(cors({
   origin: [
-    'https://todoapp-frontend.onrender.com',
+    'https://todoapp-frontend-5vgo.onrender.com',
     'http://localhost:3000'
   ],
   credentials: true,

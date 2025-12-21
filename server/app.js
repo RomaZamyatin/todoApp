@@ -7,6 +7,7 @@ const User = require('./models/User');
 const Task = require('./models/Task');
 // Импортируем маршруты
 const authRoutes = require('./routes/authRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 
 User.hasMany(Task, { foreignKey: 'user_id', as: 'tasks' });
 Task.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
@@ -20,6 +21,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes);
 
 // Тестовый маршрут
 app.get('/api/health', (req, res) => {
@@ -60,93 +62,6 @@ app.get('/api/db-test', async (req, res) => {
     res.status(500).json({
       status: 'ERROR',
       message: 'Ошибка работы с базой данных',
-      error: error.message
-    });
-  }
-});
-
-// Маршрут для получения всех задач (пример будущего функционала)
-app.get('/api/tasks', async (req, res) => {
-  try {
-    const tasks = await Task.findAll({
-      include: [{
-        model: User,
-        as: 'user',
-        attributes: ['id', 'firstName', 'lastName', 'email']
-      }],
-      order: [['created_at', 'DESC']]
-    });
-    res.json({
-      status: 'OK',
-      data: tasks,
-      count: tasks.length
-    });
-  } catch (error) {
-    console.error('Ошибка при получении задач:', error);
-    res.status(500).json({
-      status: 'ERROR',
-      message: 'Ошибка при получении задач',
-      error: error.message
-    });
-  }
-});
-
-// Маршрут для получения всех пользователей (пример)
-app.get('/api/users', async (req, res) => {
-  try {
-    const users = await User.findAll({
-      attributes: ['id', 'firstName', 'lastName', 'email', 'created_at'],
-      order: [['created_at', 'DESC']]
-    });
-    
-    res.json({
-      status: 'OK',
-      data: users,
-      count: users.length
-    });
-  } catch (error) {
-    console.error('Ошибка при получении пользователей:', error);
-    res.status(500).json({
-      status: 'ERROR',
-      message: 'Ошибка при получении пользователей',
-      error: error.message
-    });
-  }
-});
-
-// Простой маршрут для создания тестовой задачи (пример)
-app.post('/api/tasks/test', async (req, res) => {
-  try {
-    // Используем первого пользователя
-    const user = await User.findOne();
-    
-    if (!user) {
-      return res.status(404).json({
-        status: 'ERROR',
-        message: 'Пользователь не найден'
-      });
-    }
-    
-    const testTask = await Task.create({
-      userId: user.id,
-      title: 'Тестовая задача из API',
-      description: 'Эта задача создана через API запрос',
-      priority: 'medium',
-      category: 'general',
-      tags: ['тест', 'api'],
-      dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // Через 7 дней
-    });
-    
-    res.json({
-      status: 'OK',
-      message: 'Тестовая задача создана',
-      task: testTask
-    });
-  } catch (error) {
-    console.error('Ошибка при создании задачи:', error);
-    res.status(500).json({
-      status: 'ERROR',
-      message: 'Ошибка при создании задачи',
       error: error.message
     });
   }

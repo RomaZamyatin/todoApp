@@ -126,7 +126,7 @@ const startServer = async () => {
       console.log(`   POST http://localhost:${PORT}/api/tasks/test`);
       console.log(`\n👨‍💻 Ожидание запросов...`);
     });
-    
+    //
   } catch (error) {
     console.error('❌ Не удалось запустить сервер:', error);
     process.exit(1);

@@ -108,10 +108,10 @@ const startServer = async () => {
     await connectDB();
 
     // ==== ВРЕМЕННО (только для создания таблиц) ====
-    console.log('🔄 Создаю таблицы...');
-    const { sequelize } = require('./config/database');
-    await sequelize.sync({ alter: true });
-    console.log('✅ Таблицы созданы');
+    // console.log('🔄 Создаю таблицы...');
+    // const { sequelize } = require('./config/database');
+    // await sequelize.sync({ alter: true });
+    // console.log('✅ Таблицы созданы');
 // ==============================================
     
     // Синхронизация моделей с базой данных
